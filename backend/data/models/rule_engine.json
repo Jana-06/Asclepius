@@ -1,0 +1,70 @@
+{
+  "chest_pain_emergency": {
+    "symptoms": ["chest_pain"],
+    "action": "HIGH",
+    "department": "Emergency",
+    "reason": "Potential cardiac emergency - chest pain requires immediate evaluation"
+  },
+  "stroke_symptoms": {
+    "symptoms": ["speech_difficulty", "numbness", "confusion"],
+    "min_match": 2,
+    "action": "HIGH",
+    "department": "Emergency",
+    "reason": "Potential stroke - FAST protocol activation"
+  },
+  "respiratory_distress": {
+    "symptoms": ["breathlessness"],
+    "vitals": {"spo2": {"lt": 92}},
+    "action": "HIGH",
+    "department": "Emergency",
+    "reason": "Respiratory distress with low oxygen saturation"
+  },
+  "seizure_emergency": {
+    "symptoms": ["seizures"],
+    "action": "HIGH",
+    "department": "Emergency",
+    "reason": "Active seizure requires immediate neurological evaluation"
+  },
+  "cardiac_warning": {
+    "symptoms": ["palpitations", "dizziness", "fainting"],
+    "min_match": 2,
+    "action": "HIGH",
+    "department": "Cardiology",
+    "reason": "Multiple cardiac warning signs"
+  },
+  "gi_bleed": {
+    "symptoms": ["blood_in_stool", "abdominal_pain"],
+    "action": "HIGH",
+    "department": "Emergency",
+    "reason": "Potential GI bleeding"
+  },
+  "elderly_fever": {
+    "symptoms": ["fever"],
+    "age": {"gt": 65},
+    "action": "MEDIUM",
+    "department": "General Medicine",
+    "reason": "Fever in elderly patient requires careful evaluation"
+  },
+  "pediatric_respiratory": {
+    "symptoms": ["breathlessness", "wheezing"],
+    "age": {"lt": 5},
+    "action": "HIGH",
+    "department": "Pediatrics",
+    "reason": "Respiratory symptoms in young child"
+  },
+  "hypertensive_crisis": {
+    "symptoms": [],
+    "vitals": {"bp_systolic": {"gt": 180}},
+    "action": "HIGH",
+    "department": "Emergency",
+    "reason": "Hypertensive crisis - severely elevated blood pressure"
+  },
+  "hypotension_shock": {
+    "symptoms": [],
+    "vitals": {"bp_systolic": {"lt": 90}},
+    "action": "HIGH",
+    "department": "Emergency",
+    "reason": "Hypotension - possible shock"
+  }
+}
+
