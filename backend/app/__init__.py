@@ -1,4 +1,0 @@
-"""
-SwasthyaFlow AI Backend Application
-"""
-
