@@ -1,0 +1,46 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Allow all reads and writes for development (temporary)
+    match /{document=**} {
+      allow read, write: if true;
+    }
+
+    // Patients collection
+    match /patients/{patientId} {
+      allow read, write: if request.auth != null && request.auth.uid == patientId;
+      allow read: if request.auth != null;
+      allow create: if request.auth != null && request.auth.uid == patientId;
+    }
+
+    // Doctors collection
+    match /doctors/{doctorId} {
+      allow read, write: if request.auth != null && request.auth.uid == doctorId;
+      allow read: if request.auth != null;
+      allow create: if request.auth != null && request.auth.uid == doctorId;
+    }
+
+    // Hospitals collection - readable by all authenticated users
+    match /hospitals/{hospitalId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+
+    // Tokens collection
+    match /tokens/{tokenId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Triage sessions
+    match /triage_sessions/{sessionId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Outbreak signals
+    match /outbreak_signals/{signalId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+  }
+}
